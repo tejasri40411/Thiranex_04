@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inkline Blog</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Inkline</p>
+        <h1>Blog Platform</h1>
+      </div>
+      <div class="session">
+        <span id="sessionLabel">Not signed in</span>
+        <button id="logoutButton" class="ghost hidden" type="button">Log out</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="panel auth-panel">
+        <div class="tabs" role="tablist" aria-label="Authentication">
+          <button id="loginTab" class="tab active" type="button">Login</button>
+          <button id="registerTab" class="tab" type="button">Register</button>
+        </div>
+
+        <form id="loginForm" class="stack">
+          <label>
+            Email
+            <input name="email" type="email" autocomplete="email" required>
+          </label>
+          <label>
+            Password            <input name="password" type="password" autocomplete="current-password" required>
+          </label>
+          <button type="submit">Sign in</button>
+        </form>
+        <form id="registerForm" class="stack hidden">
+          <label>
+            Name
+            <input name="name" autocomplete="name" required>
+          </label>
+          <label>
+            Email
+            <input name="email" type="email" autocomplete="email" required>
+          </label>
+          <label>
+            Password
+            <input name="password" type="password" autocomplete="new-password" minlength="6" required>
+          </label>
+          <button type="submit">Create account</button>
+        </form>
+
+        <p id="authMessage" class="message" role="status"></p>
+      </aside>
+
+      <section class="content">
+        <form id="postForm" class="panel post-editor">
+          <div class="editor-head">
+            <h2 id="editorTitle">Create Post</h2>
+            <button id="cancelEditButton" class="ghost hidden" type="button">Cancel edit</button>
+          </div>
+          <input id="postTitle" name="title" placeholder="Post title" maxlength="120" required>
+          <textarea id="postContent" name="content" placeholder="Write your post..." rows="8" required></textarea>
+          <button type="submit">Publish</button>
+          <p id="postMessage" class="message" role="status"></p>
+        </form>
+
+        <div class="feed-head">
+          <div>
+            <p class="eyebrow">Latest</p>
+            <h2>Posts and comments</h2>
+          </div>
+          <button id="refreshButton" class="ghost" type="button">Refresh</button>
+        </div>
+        <div id="posts" class="posts" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <template id="postTemplate">
+      <article class="post">
+        <div class="post-top">
+          <div>
+            <h3 class="post-title"></h3>
+            <p class="meta"></p>
+          </div>
+          <div class="post-actions"></div>
+        </div>
+       <p class="post-content"></p>
+        <section class="comments">
+          <div class="comments-head">
+            <h4>Comments</h4>
+           <span class="comment-count"></span>
+          </div>
+          <div class="comment-list"></div>
+          <form class="comment-form">
+            <input name="content" placeholder="Add a comment" required>
+            <button type="submit">Send</button>
+          </form>
+        </section>
+     </article>
+    </template>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
